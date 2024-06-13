@@ -32,6 +32,24 @@ Latency               252us     179us     679us    1897us      15us     966us
 | /ntfs | fuseblk | 500000 | 50000 | 65536 | 0.24s | 1.99s | 52.04s | 60.09s | 18.24s | 6.38s | 12.31s | 3.78s | 58.33s | 0.39s |
 | /loopback-on-nfs | ext2/ext3 | 500000 | 50000 | 65536 | 0.25s | 1.50s | 65.18s | 16.09s | 6.45s | 2.06s | 4.03s | 0.97s | 9.55s | 1.03s |
 
+
+Saturation test
+
+| target dir | filesystem detected by stat(1) | files to write | files to read/stat | buckets | create_random_files | read_file_content_by_id | stat_file_by_id | find_all_files |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| files-10 | ext2/ext3 | 10 | 10 | 65536 | 0.04s | 0.00s | 0.01s | 0.01s |
+| files-100 | ext2/ext3 | 100 | 100 | 65536 | 0.02s | 0.00s | 0.00s | 0.00s |
+| files-1000 | ext2/ext3 | 1000 | 1000 | 65536 | 0.05s | 0.03s | 0.03s | 0.03s |
+| files-10000 | ext2/ext3 | 10000 | 10000 | 65536 | 0.20s | 0.23s | 0.48s | 0.48s |
+| files-100000 | ext2/ext3 | 100000 | 100000 | 65536 | 1.97s | 1.43s | 0.75s | 2.84s |
+| files-1000000 | ext2/ext3 | 1000000 | 1000000 | 65536 | 21.47s | 30.79s | 10.55s | 15.75s |
+| /smb/files-10 | smb2 | 10 | 10 | 65536 | 0.01s | 0.02s | 0.00s | 0.00s |
+| /smb/files-100 | smb2 | 100 | 100 | 65536 | 0.13s | 0.02s | 0.00s | 0.02s |
+| /smb/files-1000 | smb2 | 1000 | 1000 | 65536 | 1.08s | 0.36s | 0.16s | 0.21s |
+| /smb/files-10000 | smb2 | 10000 | 10000 | 65536 | 10.86s | 8.03s | 7.54s | 2.64s |
+| /smb/files-100000 | smb2 | 100000 | 100000 | 65536 | 113.97s | 100.30s | 91.03s | 36.42s |
+| /smb/files-1000000 | smb2 | 1000000 | 1000000 | 65536 | 1131.55s | 981.76s | 900.14s | 545.16s |
+
 - disk model: usb-JMicron_Generic (cheap ~2012 usb 2.5" 1TB spinning rust drive)
 - bonnie++
 
